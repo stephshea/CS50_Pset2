@@ -15,7 +15,7 @@ string k;
 k = get_string("enter cipher integer: ");
 string text = get_string("enter text to cipher: ");
 //get cipher code
-if( argc > 2)
+if( argc > 3)
 {
     printf("too many args");
     return 0;
