@@ -4,46 +4,50 @@
 #include <string.h>
 #include <ctype.h>
 
-int main(int argc, string argv[])
+int main(int argc, string argv[]) // run program, get number for cipher key, initially stored as string
 {
-//get cipher key from user
-string k;
-//argc must be 2; keep asking for one string?
 
+    string cipherText; //store user text to encipher
+    int key; //stores stringKey as int
+    int i; // increment through plaintext
+    char ciphe; //store each letter as being cyphered
 
-//use do while to make ure int?
-k = get_string("enter cipher integer: ");
-string text = get_string("enter text to cipher: ");
-//get cipher code
-// if( argc > 3)
-// {
-//     printf("too many args");
-//     return 0;
-// }
-// else
-// {
-argc = 2;
- k = argv[1];
-//     int key = atoi(k);
-//     printf("%d\n", key);
-// }
-
-// for (int i = 0, n = strlen(text); i < n; i++)
-//     {
-//         printf("%c", text[i]);
-//     }
-
-
-//string s = get_string("Name: ");
-    for (int i = 0; i < strlen(text); i++)
+    if (argc == 2) //argc must be 2
     {
-        //printing ascii for string + 4 for each char
-        printf("%c %i\n", text[i], (int) text[i]+4);
+        cipherText = get_string("plaintext: "); //get text to encipher from user, prompt without new line
     }
-}
+    else
+    {
+        printf("you must enter 2 args\n"); //display error if use does not enter two args
+        return 1; //end program
+    }
 
-// char letter = 'Z';
-//  if (isupper(letter))
-//  {
-//     printf(letter);
-//  }
+    string stringKey = argv[1]; //assign argv[1] string to stringKey
+    key = atoi(stringKey); //convert stringKey to int
+
+    printf("ciphertext: "); //line to print encrypted plaintext
+
+    for (i = 0; i < strlen(cipherText); i++) // interate through each char in plaintext string
+    {
+        if (isalpha(cipherText[i])) //check to see if each char is alpha
+        {
+
+            if (isupper(cipherText[i])) //check if char is uppercase
+            {
+                ciphe = ((cipherText[i] - 'A' + key) % 26) + 'A'; // convert upperChars with key shift to ascii to alpha to ascii
+            }
+            else
+            {
+                ciphe = ((cipherText[i] - 'a' + key) % 26) + 'a'; //converts lowerChars with key shift to ascii to alpha to ascii
+            }
+        }
+        else
+        {
+            ciphe = cipherText[i]; //if char is not alpha, print as is
+        }
+        printf("%c", ciphe); //print enciphered chars
+    }
+    printf("\n"); //print new line
+
+    return 0;
+}
