@@ -4,14 +4,13 @@
 #include <string.h>
 #include <ctype.h>
 
-int main(int argc, string argv[]) // run program, get cipher keyword
+int main(int argc, string argv[]) // run program, get number for cipher key, initially stored as string
 {
-    string cipherText; //store plaintext to encipher
-    // string keyword = argv[1];//store keyword to encipher plaintext
-    char ciphers = [];
+
+    string cipherText; //store user text to encipher
+    int key; //stores stringKey as int
     int i; // increment through plaintext
     char ciphe; //store each letter as being cyphered
-    int key; // int length;
 
     if (argc == 2) //argc must be 2
     {
@@ -22,18 +21,10 @@ int main(int argc, string argv[]) // run program, get cipher keyword
         printf("you must enter 2 args\n"); //display error if use does not enter two args
         return 1; //end program
     }
-// printf("agrv1 %s", argv[1]);
 
-            for (j = 0; j < strlen(argv[i]); j++)
-            // for (j = 0, length = strlen(argv[1]); j<length; j++)
-            {
-                argv[i] - 'a';
-                ciphers++;
-            }
-            printf("ciphers, %c", ciphers);
+    string stringKey = argv[1]; //assign argv[1] string to stringKey
+    key = atoi(stringKey); //convert stringKey to int
 
-    // key = atoi(keyword);
-    // printf("keyword %s\n", keyword);
     printf("ciphertext: "); //line to print encrypted plaintext
 
     for (i = 0; i < strlen(cipherText); i++) // interate through each char in plaintext string
@@ -44,12 +35,10 @@ int main(int argc, string argv[]) // run program, get cipher keyword
             if (isupper(cipherText[i])) //check if char is uppercase
             {
                 ciphe = ((cipherText[i] - 'A' + key) % 26) + 'A'; // convert upperChars with key shift to ascii to alpha to ascii
-                // key += key;
             }
             else
             {
                 ciphe = ((cipherText[i] - 'a' + key) % 26) + 'a'; //converts lowerChars with key shift to ascii to alpha to ascii
-                // key += key;
             }
         }
         else
