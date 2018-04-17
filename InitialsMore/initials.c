@@ -6,7 +6,7 @@
 int main()
 {
     string s = get_string("");
-    printf("%s\n", s);
+    // printf("%s\n", s);
     //n = length of s
     int n = strlen(s);
     //prints string's first initial in uppercase
