@@ -7,58 +7,62 @@
 int main(int argc, string argv[]) // run program, get number for cipher key, initially stored as string
 {
 
+string key;
+string plaintext; //store user text to encipher
 
-    string cipherText; //store user text to encipher
-    // int key; //stores stringKey as int
-    int i, j; // increment through plaintext
-    char ciphe; //store each letter as being cyphered
-    string keyword = argv[1];
-    // int length = strlen(keyword);
-    char key;
-    if (argc == 2) //argc must be 2
-    {
-        cipherText = get_string("plaintext: "); //get text to encipher from user, prompt without new line
-    }
-    else
-    {
-        printf("you must enter 2 args\n"); //display error if use does not enter two args
-        return 1; //end program
-    }
+     if(argc ==2)
+   {
 
-    // string stringKey = argv[1]; //assign argv[1] string to stringKey
-    // key = atoi(stringKey); //convert stringKey to int
+        key = argv[1]; //assign argv[1] string to stringKey
+        int keylen = strlen(key); //define length of key
 
-    printf("ciphertext: "); //line to print encrypted plaintext
-
-    for (i = 0; i < strlen(cipherText); i++) // interate through each char in plaintext string
-    {
-        if (!isalpha(cipherText[i]))
+        for (int i = 0; i < keylen; i++) // interate through each char in key
         {
-            ciphe = cipherText[i]; //if char is not alpha, print as is
+            if (!isalpha(key[i])) //check to see if each char is alpha
+            {
+                printf("invalid key\n");
+                exit(1);
+            }
         }
 
-        else if (isalpha(cipherText[i])) //check to see if each char is alpha
+            plaintext = get_string("plaintext: "); //get text to encipher from user, prompt without new line
+
+
+
+        // int plength; length of plaintext from user input
+
+
+
+        printf("ciphertext: "); //line to print encrypted plaintext
+
+        for (int i = 0, plength = strlen(plaintext), index = 0; i < plength; i++)
         {
-            for (j = 0; j < strlen(keyword); j++) // interate through each char in plaintext string
-
-                {
-                    key = keyword[i%strlen(keyword)] - 'a';
-
-
-            if (isupper(cipherText[i])) //check if char is uppercase
+            if (isalpha(plaintext[i]))
             {
-                ciphe = ((cipherText[i] - 'A' + key) % 26) + 'A'; // convert upperChars with key shift to ascii to alpha to ascii
+
+                if (isupper(plaintext[i])) //check if char is uppercase
+                {
+                    printf( "%c", ((plaintext[i] - 'A') + (toupper(key[index]) - 'A')) % 26 + 'A'); // convert upperChars with key shift to ascii to alpha to ascii
+                }
+
+                else if (islower(plaintext[i]))
+                {
+                    printf( "%c", ((plaintext[i] - 'a') + (tolower(key[index]) - 'a')) % 26 + 'a'); //converts lowerChars with key shift to ascii to alpha to ascii
+                }
+
+                index =(index + 1) % keylen; //makes key loop through chars then back to key[0]
+
             }
             else
-            {
-                ciphe = ((cipherText[i] - 'a' + key) % 26) + 'a'; //converts lowerChars with key shift to ascii to alpha to ascii
-            }
-                }
+
+            printf("%c", plaintext[i]); //if char is not alpha, print as is
         }
-
-        printf("%c", ciphe); //print enciphered chars
+        printf("\n"); //print new line
     }
-    printf("\n"); //print new line
-
+    else
+     {
+        printf("Usage: ./vigenere k\n");
+        exit(1); //instead of return 1
+     }
     return 0;
 }
