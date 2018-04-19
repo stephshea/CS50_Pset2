@@ -67,3 +67,11 @@ int main(int argc, string argv[])
     }
     return 0;
 }
+
+// Hot Fire code right here.
+// I like how you ised the exit() function, I haven't
+// seen anyone use it yet. Your code it always easy
+// to follow and your use good variables names
+// that describes what your VAR holds. I always have
+// trouble recommending something because you make me want
+// to go back and fix my code.
