@@ -51,3 +51,12 @@ int main(int argc, string argv[]) // run program, get number for cipher key, ini
 
     return 0;
 }
+
+///////////////////////////////////////////////
+// I like how you call all your variables at the top
+// and have them nicely orientated.
+// Your a great note taker....maybe too good???
+// It felt a little overwhelming at first to go
+// through the notes. There maybe some things that
+// dont need explanation or just less explantion, which
+// could possibly contribute to making the overall code look sharper.
