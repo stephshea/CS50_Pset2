@@ -30,3 +30,11 @@ int main()
     //prints blank line
     printf("\n");
 }
+
+
+// The code is short, sweat, and succinct.
+// It is very leggible and easy to follow.
+// You seem to always have great notes that even
+// a novice off the street would be able to follow.
+// I reccomend trying Style50 on this one, it
+// showed me that 2 lines need to be indented.
